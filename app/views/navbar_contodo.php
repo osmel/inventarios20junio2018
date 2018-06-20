@@ -113,9 +113,55 @@
 				<div class="navbar-brand" style="margin-right: 15px;" id="bar_">
 					<a href="<?php echo base_url(); ?>" style="color: #ffffff;"><i class="glyphicon glyphicon-home"></i></a>
 				</div>
-				
+				<?php if ( ( $perfil == 1 ) || (in_array(10, $coleccion_id_operaciones)) ) { ?>
+					<div class="navbar-brand" id="bar_pedidos">
+						<a href="<?php echo base_url(); ?>pedidos" style="color: #ffffff;"><i class="glyphicon glyphicon-bullhorn"></i></a>
+						<span id="etiq_conteo"><?php echo $conteos; ?></span>			
+					</div>
+
+				<?php } ?>	
+
+				<div class="navbar-header">
+				<button class="navbar-toggle" type="button" data-toggle="collapse" data-target="#main-navbar">
+					<span class="sr-only">Toggle navigation</span>
+					<span class="icon-bar"></span>
+					<span class="icon-bar"></span>
+					<span class="icon-bar"></span>
+				</button>
+			</div>
 				<div class="collapse navbar-collapse" id="main-navbar">
 					<ul class="nav navbar-nav navbar-left" id="menu_opciones">
+
+					 <?php if ( ( $perfil == 1 ) || (in_array(1, $coleccion_id_operaciones)) ) { ?>
+						<li id="bar_entradas">
+							<a title="Generar Entradas al Almacén." href="<?php echo base_url(); ?>entradas" class="ttip color-blanco">Entradas</a> 
+						</li>
+					<?php } ?>	
+
+					<?php if ( ( $perfil == 1 ) || (in_array(23, $coleccion_id_operaciones)) ) { ?>
+						<li id="bar_devolucion">
+							<a title="Sección para realizar devoluciones." href="<?php echo base_url(); ?>devolucion" class="ttip color-blanco">Devoluciones</a> 
+						</li>
+					<?php } ?>	
+
+
+					 <?php if  ( ( ( $perfil == 1 ) || (in_array(2, $coleccion_id_operaciones)) ) && ($this->session->userdata('config_salida')==1) ) { ?>
+						<li id="bar_salidas">
+							<a title="Generar Salidas del Almacén." href="<?php echo base_url(); ?>salidas" class="ttip color-blanco">Salidas</a> 
+						</li>
+					<?php } ?>		
+
+					 <?php if ( ( $perfil == 1 ) || (in_array(4, $coleccion_id_operaciones)) ) { ?>
+						<li id="bar_generar_pedidos">
+							<a title="Pedidos desde una tienda o punto de venta." href="<?php echo base_url(); ?>generar_pedidos" class="ttip color-blanco">Pedido</a> 
+						</li>
+					<?php } ?>	
+
+					 <?php if ( ( $perfil == 1 ) || (in_array(3, $coleccion_id_operaciones)) ) { ?>
+						<li id="bar_editar_inventario">
+							<a title="Editar productos del inventario." href="<?php echo base_url(); ?>editar_inventario" class="ttip color-blanco">Editar</a> 
+						</li>
+					<?php } ?>						
 
 
 					 <?php if ( ( $perfil == 1 ) || (in_array(9, $coleccion_id_operaciones)) || (in_array(61, $coleccion_id_operaciones)) ) { ?>
@@ -124,6 +170,53 @@
 						</li>
 					<?php } ?>	
 
+					 <?php if ( ( $perfil == 1 ) || (in_array(26, $coleccion_id_operaciones)) ) { ?>
+						<li id="bar_traspasos">
+							<a title="Todos los catálogos del sistema." href="<?php echo base_url(); ?>traspasos" class="ttip color-blanco">Traspasos</a> 
+						</li>
+					<?php } ?>					
+
+
+
+					 <?php if ( ( $perfil == 1 ) || (in_array(8, $coleccion_id_operaciones)) 
+					 		|| (in_array(11, $coleccion_id_operaciones)) || (in_array(12, $coleccion_id_operaciones)) 
+					 		|| (in_array(13, $coleccion_id_operaciones)) || (in_array(14, $coleccion_id_operaciones)) 
+					 		|| (in_array(15, $coleccion_id_operaciones)) || (in_array(16, $coleccion_id_operaciones)) 
+					 		|| (in_array(17, $coleccion_id_operaciones)) || (in_array(18, $coleccion_id_operaciones)) 
+					 		|| (in_array(19, $coleccion_id_operaciones)) || (in_array(20, $coleccion_id_operaciones)) 
+					 		|| (in_array(21, $coleccion_id_operaciones)) || (in_array(22, $coleccion_id_operaciones)) 
+					 ) { ?>
+						<li id="bar_catalogos">
+							<a title="Todos los catálogos del sistema." href="<?php echo base_url(); ?>catalogos" class="ttip color-blanco">Catálogos</a> 
+						</li>
+					<?php } ?>			
+
+					<?php if ( ( $perfil == 1 ) || ( (in_array(29, $coleccion_id_operaciones)) || (in_array(30, $coleccion_id_operaciones)) ) ) { ?>		 
+						<li id="bar_listado_ctasxpagar"> 
+							<a title="Administración cuentas por Pagar." href="<?php echo base_url(); ?>listado_ctasxpagar" class="ttip color-blanco">Cuentas por Pagar</a>
+						</li>
+					 <?php } ?>	
+
+					<?php if ( ( $perfil == 1 ) || (in_array(39, $coleccion_id_operaciones)) ) { ?>		 
+						<li id="bar_pendiente_revision"> 
+							<a title="Administración cuentas por Pagar." href="<?php echo base_url(); ?>pendiente_revision" class="ttip color-blanco">Compra</a>
+						</li>
+					 <?php } ?>	
+
+
+
+					<?php if ( ( $perfil == 1 ) || (in_array(5, $coleccion_id_operaciones)) ) { ?>		 
+						<li id="bar_usuarios"> 
+							<a title="Administración de alta/baja de usuarios." href="<?php echo base_url(); ?>usuarios" class="ttip color-blanco">Usuarios</a>
+						</li>
+					 <?php } ?>						
+
+					 <?php //if ( ( $perfil == 2 ) && (in_array(50, $coleccion_id_operaciones)) ) { ?>		 
+					 <?php if ( ( $perfil == 1 ) || (in_array(50, $coleccion_id_operaciones)) ) { ?>		 
+						<li id="bar_conteos_opciones"> 
+							<a title="Conteo de Inventario físico." href="<?php echo base_url(); ?>conteos_opciones" class="ttip color-blanco">Conteos</a>
+						</li>
+					 <?php } ?>		
 						
 					</ul>
 				</div>
